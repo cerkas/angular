@@ -1,57 +1,21 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
 <head>
-	<title></title>
-	<script type="text/javascript" src="app.js"></script>
+    <meta charset="utf-8">
+	<title>Приложение</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="app.js"></script>
+	
+	
 </head>
-<body>
+<body ng-controller="firstCtrl">
+<form>
+     <h1>Форма</h1>
+	<input type="text" ng-model="tempInput">
+	<button ng-click="addNew()">Отправить</button>
+</form>
 <div>
-  <div class="col-sm-12">
-    <div class="row">
-      <div ng-controller="MyCtrl">
-        <h3 class="pdt-title">Review</h3>
-        <hr>
-        <div class="alert alert-danger" ng-if="reviews.length == 0">
-          {{name}} No reviews yet, be the first to review this Product!
-        </div>
-        <br>
-        <div class="col-sm-12" ng-repeat="review in reviews">
-          <blockquote class="row">
-            <h3 class="pdt-title col-sm-6">{{review.username}}</h3>
-            <h3 class="pdt-title col-sm-6">{{review.star}}</h3>
-            <h5 class="col-sm-12"><small><i>{{review.email}}</i></small></h5>
-            <p class="col-sm-12">{{review.message}}</p>
-          </blockquote>
-        </div>
-        <form class="form-inline form-group">
-          <div class="input-group">
-            <span class="input-group-addon">Name</span>
-            <input class="form-control" type="text" ng-model="review.username" />
-
-            <span class="input-group-addon">E-mail</span>
-            <input class="form-control" type="email" ng-model="review.email" />
-
-            <span class="input-group-addon">Star</span>
-            <select class="form-control" ng-model="review.star">
-              <option name="oneStar" value="1 star">1 Star</option>
-              <option name="twoStar" value="2 star">2 Star</option>
-              <option name="threeStar" value="3 star">3 Star</option>
-              <option name="fourStar" value="4 star">4 Star</option>
-              <option name="fiveStar" value="5 star">5 Star</option>
-            </select>
-          </div>
-        </form>
-        <textarea class="form-control" rows="5" ng-model="review.message"></textarea>
-        <br>
-        <input type="submit" class="btn btn-block btn-success" ng-click="addReview()" value="Submit review" />
-
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
+	<p ng-repeat="task in tasksArray">{{task}}<button ng-click="deleteItem(task)">Удалить</button></p>
+</div>  
 </body>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 </html>

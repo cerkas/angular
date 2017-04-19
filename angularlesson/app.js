@@ -1,22 +1,21 @@
-
-var myApp = angular.module('myApp', []);
-
-function MyCtrl($scope) {
-  $scope.name = 'Superhero';
-
-  $scope.reviews = [];
-  
-  $scope.review = {};
-  
-  $scope.addReview = function () {
-    
-    $scope.reviews.push({
-      name: $scope.review.username,
-      email: $scope.review.email,
-      star: $scope.review.star,
-      message: $scope.review.message
-    });
-    
-    $scope.review = {};    
-  };
-}
+ angular.module("myApp",[])
+  .controller("firstCtrl", function($scope){
+  	// Create ariable
+  	$scope.tempInput="Привет";
+  	//Array
+  	$scope.tasksArray=["Привет", "тест"];
+    //Function
+    $scope.addNew =function(){
+    	if ($scope.tempInput) {
+    	$scope.tasksArray.push($scope.tempInput);
+    	$scope.tempInput="";
+    }else{
+    	alert("Пусто")
+    }
+    }
+    $scope.deleteItem =function(item){
+      var index= $scope.tasksArray.indexOf(item)
+      console.log(index);
+      $scope.tasksArray.splice(index,1);
+    }
+  });
